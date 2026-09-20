@@ -1,0 +1,397 @@
+/**
+ * 龙猫跑轮 · 全站设计系统（apple.com / iOS 设计语言）
+ * 所有页面共用：设计令牌 + tp- 前缀组件类。
+ * 页面特有样式请在各自 <style scoped> 中使用 var(--tp-*) 令牌，勿覆盖本文件语义。
+ */
+
+:root {
+  /* 色板 */
+  --tp-bg: #f5f5f7;                 /* apple.com 页面底色 */
+  --tp-surface: #ffffff;            /* 卡片 */
+  --tp-text: #1d1d1f;               /* 主文字 */
+  --tp-text-2: #6e6e73;             /* 次级文字 */
+  --tp-text-3: #86868b;             /* 弱化文字 */
+  --tp-separator: rgba(60, 60, 67, 0.12);
+  --tp-fill: #f2f2f7;               /* 输入框 / 胶囊底 */
+  --tp-fill-hover: #e8e8ed;
+  --tp-blue: #0071e3;               /* apple.com CTA 蓝 */
+  --tp-blue-hover: #0077ed;
+  --tp-blue-press: #006edb;
+  --tp-blue-soft: rgba(0, 113, 227, 0.1);
+  --tp-green: #34c759;              /* iOS 成功绿 */
+  --tp-red: #ff3b30;                /* iOS 错误红 */
+  --tp-red-soft: rgba(255, 59, 48, 0.08);
+
+  /* 圆角 / 阴影 / 动效 */
+  --tp-radius-card: 22px;
+  --tp-radius-control: 12px;
+  --tp-shadow-card: 0 4px 24px rgba(17, 17, 17, 0.05);
+  --tp-shadow-card-hover: 0 10px 36px rgba(17, 17, 17, 0.1);
+  --tp-shadow-float: 0 24px 80px rgba(0, 0, 0, 0.22);
+  --tp-ease: cubic-bezier(0.28, 0.11, 0.32, 1);
+  --tp-dur: 200ms;
+}
+
+/* ---------- 页面骨架 ---------- */
+
+.tp-page {
+  background: var(--tp-bg);
+  color: var(--tp-text);
+  margin: 0 auto;
+  max-width: 640px;
+  min-height: 100vh;
+  padding: 0 20px 32px;
+}
+
+/* apple.com 式半透明吸顶导航 */
+.tp-nav {
+  align-items: center;
+  backdrop-filter: saturate(180%) blur(20px);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  background: rgba(245, 245, 247, 0.72);
+  border-bottom: 1px solid var(--tp-separator);
+  display: flex;
+  justify-content: space-between;
+  margin: 0 -20px;
+  min-height: 52px;
+  padding: 8px 22px;
+  position: sticky;
+  top: 0;
+  z-index: 20;
+}
+
+.tp-nav-side {
+  align-items: center;
+  display: flex;
+  gap: 14px;
+  min-width: 0;
+}
+
+.tp-back {
+  align-items: center;
+  color: var(--tp-blue);
+  display: inline-flex;
+  font-size: 15px;
+  font-weight: 600;
+  padding: 10px 4px;
+  text-decoration: none;
+  white-space: nowrap;
+}
+.tp-back:hover { text-decoration: underline; }
+
+.tp-nav-title {
+  color: var(--tp-text);
+  font-size: 15px;
+  font-weight: 600;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* 计数徽章 */
+.tp-badge {
+  background: var(--tp-surface);
+  border-radius: 999px;
+  box-shadow: inset 0 0 0 1px var(--tp-separator);
+  color: var(--tp-text);
+  font-size: 13px;
+  font-weight: 600;
+  padding: 6px 13px;
+  white-space: nowrap;
+}
+
+/* ---------- 标题 ---------- */
+
+.tp-title {
+  font-size: 32px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin: 0;
+}
+
+@media (max-width: 560px) {
+  .tp-title { font-size: 28px; }
+}
+
+.tp-subtitle {
+  color: var(--tp-text-2);
+  font-size: 15px;
+  margin: 6px 0 0;
+}
+
+/* ---------- 卡片（iOS 分组列表容器） ---------- */
+
+.tp-card {
+  background: var(--tp-surface);
+  border-radius: var(--tp-radius-card);
+  box-shadow: var(--tp-shadow-card);
+  margin-bottom: 14px;
+  padding: 4px 18px 6px;
+}
+
+.tp-card--pad { padding: 22px 24px; }
+
+.tp-group-label {
+  color: var(--tp-text-2);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  padding: 12px 2px 4px;
+  text-transform: uppercase;
+}
+
+.tp-cell {
+  align-items: center;
+  border-bottom: 1px solid var(--tp-separator);
+  display: flex;
+  justify-content: space-between;
+  min-height: 48px;
+  padding: 8px 2px;
+  width: 100%;
+}
+.tp-cell:last-child { border-bottom: 0; }
+
+.tp-cell-key { color: var(--tp-text-2); font-size: 15px; }
+
+.tp-cell-val {
+  font-size: 15px;
+  font-weight: 600;
+  text-align: right;
+}
+
+/* ---------- 按钮 ---------- */
+
+.tp-cta {
+  align-items: center;
+  background: var(--tp-blue);
+  border: 0;
+  border-radius: 980px;             /* apple.com 全圆角胶囊 */
+  color: #fff;
+  cursor: pointer;
+  display: inline-flex;
+  font-size: 17px;
+  font-weight: 600;
+  justify-content: center;
+  letter-spacing: -0.01em;
+  margin: 0;
+  min-height: 50px;
+  padding: 0 30px;
+  text-decoration: none;
+  transition: background var(--tp-dur) var(--tp-ease), transform var(--tp-dur) var(--tp-ease);
+}
+.tp-cta:hover { background: var(--tp-blue-hover); }
+.tp-cta:active { background: var(--tp-blue-press); }
+.tp-cta:disabled {
+  background: rgba(0, 113, 227, 0.4);   /* iOS 式褪色蓝，白字可读 */
+  color: rgba(255, 255, 255, 0.95);
+  cursor: default;
+}
+
+.tp-cta--block {
+  display: flex;
+  width: 100%;
+}
+
+/* 紧凑规格（内联场景） */
+.tp-cta--sm {
+  font-size: 15px;
+  min-height: 44px;
+  padding: 0 24px;
+}
+
+/* 安静的文字操作（退出登录等） */
+.tp-quiet {
+  background: transparent;
+  border: 0;
+  color: var(--tp-blue);
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: 600;
+  min-height: 40px;
+  padding: 8px 10px;
+}
+.tp-quiet:hover { text-decoration: underline; }
+.tp-quiet--danger { color: var(--tp-red); }
+
+/* ---------- 胶囊选择 ---------- */
+
+.tp-chip {
+  background: var(--tp-fill);
+  border: 0;
+  border-radius: 999px;
+  color: var(--tp-text);
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  min-height: 40px;
+  padding: 9px 18px;
+  transition: background 150ms ease, color 150ms ease;
+}
+.tp-chip:hover { background: var(--tp-fill-hover); }
+.tp-chip.on {
+  background: var(--tp-text);
+  color: #fff;
+  font-weight: 700;
+}
+
+/* ---------- 表单 ---------- */
+
+.tp-input,
+.tp-textarea {
+  background: var(--tp-fill);
+  border: 1px solid transparent;
+  border-radius: var(--tp-radius-control);
+  color: var(--tp-text);
+  font-family: inherit;
+  font-size: 15px;
+  outline: none;
+  padding: 13px 16px;
+  transition: border-color 160ms ease, background 160ms ease, box-shadow 160ms ease;
+  width: 100%;
+}
+.tp-input::placeholder,
+.tp-textarea::placeholder { color: #a1a1a6; }
+.tp-input:focus,
+.tp-textarea:focus {
+  background: var(--tp-surface);
+  border-color: var(--tp-blue);
+  box-shadow: 0 0 0 3px var(--tp-blue-soft);
+}
+.tp-textarea {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 12px;
+  line-height: 1.6;
+  resize: none;
+}
+
+/* webkit 自动填充去黄底 */
+.tp-input:-webkit-autofill,
+.tp-textarea:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0 60px var(--tp-fill) inset;
+  -webkit-text-fill-color: var(--tp-text);
+}
+
+/* Vuetify VSelect 对齐（token 页使用） */
+.tp-vselect .v-field {
+  background: var(--tp-fill) !important;
+  border-radius: var(--tp-radius-control) !important;
+  box-shadow: none !important;
+}
+
+/* ---------- 链接 / 备注 / 消息 ---------- */
+
+.tp-link {
+  color: var(--tp-blue);
+  font-weight: 500;
+  text-decoration: none;
+}
+.tp-link:hover { text-decoration: underline; }
+
+.tp-note {
+  align-items: center;
+  color: var(--tp-text-3);
+  display: flex;
+  font-size: 12px;
+  gap: 5px;
+  justify-content: center;
+  margin: 11px 0 0;
+}
+
+.tp-msg {
+  border-radius: var(--tp-radius-control);
+  display: flex;
+  font-size: 13px;
+  gap: 7px;
+  padding: 11px 13px;
+}
+.tp-msg--err {
+  background: var(--tp-red-soft);
+  color: #d70015;              /* 对比度 ≥4.5:1 */
+}
+.tp-msg--ok {
+  background: rgba(52, 199, 89, 0.1);
+  color: #1a7d37;
+}
+
+/* ---------- 反馈 ---------- */
+
+.tp-spinner {
+  animation: tp-spin 0.9s linear infinite;
+  border: 3px solid var(--tp-separator);
+  border-radius: 50%;
+  border-top-color: var(--tp-text);
+  box-sizing: content-box;
+  height: 22px;
+  width: 22px;
+}
+@keyframes tp-spin { to { transform: rotate(360deg); } }
+
+/* 数字（计时 / 里程等不跳动） */
+.tp-num { font-variant-numeric: tabular-nums; }
+
+/* 入场动画 */
+@keyframes tp-rise {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: none; }
+}
+.tp-rise { animation: tp-rise 480ms var(--tp-ease) both; }
+.tp-rise-2 { animation: tp-rise 480ms var(--tp-ease) 70ms both; }
+.tp-rise-3 { animation: tp-rise 480ms var(--tp-ease) 140ms both; }
+
+/* 减弱动态效果(系统无障碍设置 / 无头截图 --force-prefers-reduced-motion):
+   动画与过渡瞬时直达终态,内容保持可见 */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-delay: 0ms !important;
+    animation-duration: 1ms !important;
+    transition-duration: 1ms !important;
+  }
+}
+
+/* 弹窗 */
+.tp-mask {
+  align-items: center;
+  backdrop-filter: blur(8px);
+  background: rgba(0, 0, 0, 0.28);
+  display: flex;
+  inset: 0;
+  justify-content: center;
+  padding: 24px;
+  position: fixed;
+  z-index: 50;
+}
+
+/* ---------- 全局焦点环 ---------- */
+
+.tp-cta:focus-visible,
+.tp-quiet:focus-visible,
+.tp-chip:focus-visible,
+.tp-input:focus-visible,
+.tp-textarea:focus-visible,
+.tp-back:focus-visible,
+.tp-link:focus-visible,
+.tp-badge:focus-visible,
+button:focus-visible {
+  outline: 3px solid var(--tp-blue);
+  outline-offset: 2px;
+}
+
+/* iOS Safari 聚焦输入框不触发页面自动放大 */
+@media (max-width: 560px) {
+  .tp-input,
+  .tp-textarea { font-size: 16px; }
+}
+
+/* ---------- 动效偏好 ---------- */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

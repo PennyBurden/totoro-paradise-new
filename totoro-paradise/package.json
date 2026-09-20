@@ -1,0 +1,67 @@
+{
+  "name": "totoro-paradise-miniapp",
+  "type": "module",
+  "version": "1.0.0-miniapp",
+  "packageManager": "pnpm@8.15.5",
+  "author": "BeiyanYunyi & Clansty",
+  "license": "AGPL-3.0-or-later",
+  "scripts": {
+    "start": "node .output/server/index.mjs",
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare"
+  },
+  "dependencies": {
+    "@amap/amap-jsapi-loader": "^1.0.1",
+    "@unocss/nuxt": "^0.58.3",
+    "@unocss/reset": "^0.58.3",
+    "@vueuse/core": "^10.7.1",
+    "buffer": "^6.0.3",
+    "cli-progress": "^3.12.0",
+    "colors": "^1.4.0",
+    "date-fns": "^2.30.0",
+    "gsap": "^3.15.0",
+    "ky": "^1.2.3",
+    "md5": "^2.3.0",
+    "minimist": "^1.2.8",
+    "qrcode": "^1.5.4",
+    "unocss": "^0.58.3",
+    "uuid": "^9.0.1",
+    "vite-plugin-vuetify": "^2.0.1",
+    "vue": "^3.4.21",
+    "vue-router": "^4.3.0",
+    "vuetify": "^3.4.10"
+  },
+  "devDependencies": {
+    "@antfu/eslint-config": "^2.9.0",
+    "@iconify-json/mdi": "^1.1.55",
+    "@mdi/font": "^7.4.47",
+    "@rollup/plugin-inject": "^5.0.5",
+    "@types/cli-progress": "^3.11.5",
+    "@types/md5": "^2.3.5",
+    "@types/minimist": "^1.2.5",
+    "@types/qrcode": "^1.5.6",
+    "@types/uuid": "^9.0.7",
+    "@unocss/eslint-plugin": "^0.58.5",
+    "eslint": "^8.57.0",
+    "eslint-plugin-format": "^0.1.0",
+    "nuxt": "^3.9.1",
+    "typescript": "^5.3.3"
+  },
+  "pnpm": {
+    "overrides": {
+      "c12": "^1.11.2",
+      "jiti": "^1.21.7",
+      "magicast": "^0.3.5",
+      "mlly": "^1.8.2",
+      "nuxi": "3.12.0",
+      "has": "npm:@nolyfill/has@latest",
+      "hasown": "npm:@nolyfill/hasown@latest",
+      "isarray": "npm:@nolyfill/isarray@latest",
+      "side-channel": "npm:@nolyfill/side-channel@latest"
+    }
+  },
+  "description": "totoro-paradise 的校园阳光跑微信小程序协议适配版(wxxcx/明文JSON/Bearer)"
+}

@@ -1,0 +1,28 @@
+<script setup lang="ts">
+useHead({
+  title: '龙猫跑轮',
+  meta: [
+    { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+    { name: 'theme-color', content: '#fafafa' },
+  ],
+});
+</script>
+<script lang="ts">
+window.global = window;
+</script>
+<template>
+  <NuxtPage />
+</template>
+
+<style>
+html { scroll-behavior: smooth; }
+html, body, #__nuxt { min-height: 100%; }
+body {
+  margin: 0;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Helvetica Neue', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+}
+* { box-sizing: border-box; }
+</style>

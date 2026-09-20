@@ -1,0 +1,34 @@
+# ---- 敏感数据:绝不上传 ----
+# 运行时数据(含 adminKey/secret、学号/IP 明细)
+totoro-paradise/totoro-auth.json
+totoro-paradise/totoro-stats.json
+totoro-admin/totoro-auth.json
+totoro-admin/totoro-stats.json
+
+# 获取龙猫ID 抓包工具(含 MITM CA 私钥 ca.key、历史 token)
+获取龙猫ID/
+获取龙猫ID.zip
+获取龙猫ID .zip
+
+# 日志(totoro-debug.log 含真实 token / 学号 / 抓包原文)
+*.log
+
+# ---- 依赖与构建产物 ----
+node_modules/
+.output/
+.nuxt/
+.dist/
+dist/
+.cache/
+.vite/
+
+# ---- 系统杂项 ----
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# 本地临时/会话目录
+.tmp*/
+.claude/
+CFUA6A6.tmp.dir/
+.preview-shots/
